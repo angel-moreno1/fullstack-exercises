@@ -1,0 +1,7 @@
+title new note span
+
+browser->browser: put some string in the input
+browser->browser: clicked in the submit button
+browser->browser: update the local notes array
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+server->server: update the notes 

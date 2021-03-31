@@ -1,0 +1,5 @@
+browser->browser: put some string in the input
+browser->browser: clicked in the submit button
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+browser->server: redirected to https://studies.cs.helsinki.fi/exampleapp/new_note
+server->browser: redirected to the previous page
