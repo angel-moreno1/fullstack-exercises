@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import CountriName from './components/CountriName'
+import SingleCountrie from './components/SingleCountrie'
 import axios from 'axios'
 
 function App() {
@@ -17,9 +19,7 @@ function App() {
     setInputValue(value)
   }
 
-  const changeSingleCountrie = (countrie) => {
-    setSingleCountrie(countrie)
-  }
+  const changeSingleCountrie = countrie => void setSingleCountrie(countrie)
 
   const selectedCountries = inputValue && countries.filter((countrie) => (
     countrie.name.trim().toLowerCase().indexOf(inputValue.trim().toLowerCase()) !== -1
@@ -43,34 +43,5 @@ function App() {
   );
 }
 
-const CountriName = props => {
-  const { countrie, onChangeSingleCountrie } = props
-  
-  return (
-    <p>{countrie.name} <button onClick={() => onChangeSingleCountrie(countrie)}>show</button></p>
-  )
-}
-
-const SingleCountrie = props => {
-  const { countrieInformation } = props
-  const { name, capital, population, languages, flag } = countrieInformation
-
-  return (
-    <>
-    <h2>{name}</h2>
-    <p style={{margin: 0}}>capital: {capital}</p>
-    <p style={{margin: 0}}>population: {population}</p>
-    <h3>languages</h3>
-    <ul>
-      {
-        languages.map((language, i) => (
-          <li key={i} style={{margin: 0}}>{language.name}</li>
-        ))
-      }
-    </ul>
-    <img style={{ width: "100px" }} src={flag} alt={name}/>
-    </>
-  )
-}
 
 export default App;
