@@ -17,6 +17,14 @@ const App = () => {
 
   useEffect(() => void getAll().then(data => void setPersons(data)), [])
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setSucesssfull('')
+      setUnsuccessful('')
+    }, 3000);
+    return () => void clearTimeout(timeout)
+  }, [successfull, unsuccessful])
+
   const updatePersons = () => {
     const updatePerson = window.confirm(`${newName} is already added to phonebook, replace the old number with new one?`)
     if(updatePerson) {
@@ -57,17 +65,6 @@ const App = () => {
       .catch(err => alert(err))
       setSucesssfull(`${newName} Added  successfully`)
   }
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setSucesssfull('')
-      setUnsuccessful('')
-    }, 3000);
-    return () => void clearTimeout(timeout)
-  }, [successfull, unsuccessful])
-
-  
-
 
   const DeleteSinglePerson = person => {
     const {id, name} = person
